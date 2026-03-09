@@ -1,0 +1,274 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/layout/basic/js/main.js)-->
+<!--@css(/layout/basic/css/main.css)-->
+
+<style>
+    /* Apple Titanium Dark Global */
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+    }
+
+    .apple-product-container {
+        background-color: #000;
+        color: #f5f5f7;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+        padding: 120px 20px 80px;
+        line-height: 1.6;
+    }
+
+    .hero-sec {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 40px;
+        color: #ffd700;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4.2rem);
+        font-weight: 800;
+        line-height: 1.15;
+        background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 24px;
+        letter-spacing: -0.04em;
+    }
+
+    .hero-desc {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        color: #86868b;
+        max-width: 700px;
+        margin: 0 auto 80px;
+        font-weight: 400;
+    }
+
+    /* Bento Sec */
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto 100px;
+    }
+
+    .bento-item {
+        background: #111111;
+        border-radius: 32px;
+        padding: 50px 40px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        transition: transform 0.4s ease, background 0.4s ease;
+    }
+
+    .bento-item:hover {
+        transform: translateY(-5px);
+        background: #161618;
+        border-color: rgba(255, 215, 0, 0.2);
+    }
+
+    .bento-item h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #f5f5f7;
+        letter-spacing: -0.02em;
+    }
+
+    .bento-item p {
+        color: #a1a1a6;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* Data Sec */
+    .data-sec {
+        background: #1d1d1f;
+        border-radius: 40px;
+        padding: 80px 40px;
+        text-align: center;
+        max-width: 1100px;
+        margin: 0 auto 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .data-sec::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .data-sec h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 16px;
+        letter-spacing: -0.03em;
+    }
+
+    .data-sec>p {
+        color: #86868b;
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+    }
+
+    .data-row {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .data-box {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 24px;
+        padding: 30px;
+        min-width: 250px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .data-label {
+        display: block;
+        color: #86868b;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+
+    .data-val {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.01em;
+    }
+
+    .data-val.accent {
+        color: #ffd700;
+        font-size: 2rem;
+    }
+
+    .data-arrow {
+        font-size: 2rem;
+        color: #55555a;
+        font-weight: 300;
+    }
+
+    /* CTA */
+    .cta-sec {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 48px;
+        background: #ffd700;
+        color: #000;
+        text-decoration: none;
+        border-radius: 40px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .cta-btn:hover {
+        transform: scale(1.03);
+        background: #ffea00;
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media(max-width: 800px) {
+        .bento-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .data-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .data-box {
+            min-width: 100%;
+        }
+
+        .data-arrow {
+            transform: rotate(90deg);
+        }
+    }
+</style>
+
+<div class="apple-product-container">
+    <div class="hero-sec">
+        <div class="hero-badge">하이엔드 마스터 플랜</div>
+        <h1 class="hero-title">신동 VIP 올인원 솔루션<br>(기획+영상+광고+SEO)</h1>
+        <p class="hero-desc">압도적 시장 점유율 1위를 향한 전략 게임. 마치 유능한 마케팅 CMO와 팀 전체를 기업 내부에 세팅하는 것과 같은 파괴력과 비즈니스 성장을 보장합니다.</p>
+    </div>
+
+    <div class="bento-grid">
+        <div class="bento-item">
+            <h3>단절된 커뮤니케이션의 종말</h3>
+            <p>블로그는 A대행사, 영상은 B프로덕션, 광고는 C대행사... 각각 다른 톤앤매너로 일관성을 잃는 마케팅을 끝냅니다. 신동컴퍼니의 전담 TF팀이 브랜딩, 기획, 촬영, SEO 배포, 퍼포먼스
+                광고 집행 전 영역을 완벽하게 통합 통제합니다.</p>
+        </div>
+        <div class="bento-item">
+            <h3>매출 스케일업(Scale-up)에 집중</h3>
+            <p>우리의 목표는 단순 노출 수나 조회수가 아닙니다. 브랜드의 본질을 분석하여 비즈니스 그로스(Growth)에 직접적으로 타격을 줄 수 있는 고도화된 초격차 전략을 컨설팅하고 실행까지
+                옮깁니다.</p>
+        </div>
+    </div>
+
+    <div class="data-sec">
+        <h2>기업 스케일 전환 성과</h2>
+        <p>비즈니스 모델 안착과 수익 확대를 직관적으로 체감할 수 있습니다.</p>
+        <div class="data-row">
+            <div class="data-box">
+                <span class="data-label">진행 전</span>
+                <span class="data-val" style="font-size:1.4rem;">단기적인 광고 집행 및 KPI 부재</span>
+            </div>
+            <div class="data-arrow">➔</div>
+            <div class="data-box" style="border-color: rgba(230, 170, 0, 0.3);">
+                <span class="data-label">진행 후 (목표치)</span>
+                <span class="data-val accent">분기 스케일업 및 브랜드 가치 점프</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-sec">
+        <a href="http://pf.kakao.com/_HQErG/chat" target="_blank" class="cta-btn">해당 마스터 플랜 심층 VIP 상담</a>
+    </div>
+</div>

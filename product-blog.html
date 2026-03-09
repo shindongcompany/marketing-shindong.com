@@ -1,0 +1,266 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/layout/basic/js/main.js)-->
+<!--@css(/layout/basic/css/main.css)-->
+
+<style>
+    /* Apple Titanium Light Global */
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+    }
+
+    .apple-product-container {
+        background-color: #ffffff;
+        color: #1d1d1f;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+        padding: 120px 20px 80px;
+        line-height: 1.6;
+    }
+
+    .hero-sec {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 40px;
+        color: #86868b;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4.2rem);
+        font-weight: 800;
+        line-height: 1.15;
+        background: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 24px;
+        letter-spacing: -0.04em;
+    }
+
+    .hero-desc {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        color: #86868b;
+        max-width: 700px;
+        margin: 0 auto 80px;
+        font-weight: 400;
+    }
+
+    /* Bento Sec */
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto 100px;
+    }
+
+    .bento-item {
+        background: #f5f5f7;
+        border-radius: 32px;
+        padding: 50px 40px;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+        transition: transform 0.4s ease, background 0.4s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .bento-item:hover {
+        transform: translateY(-5px);
+        background: #ffffff;
+        border-color: rgba(0, 0, 0, 0.05);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .bento-item h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #1d1d1f;
+        letter-spacing: -0.02em;
+    }
+
+    .bento-item p {
+        color: #86868b;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* Data Sec */
+    .data-sec {
+        background: #f5f5f7;
+        border-radius: 40px;
+        padding: 80px 40px;
+        text-align: center;
+        max-width: 1100px;
+        margin: 0 auto 100px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .data-sec h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 16px;
+        letter-spacing: -0.03em;
+    }
+
+    .data-sec>p {
+        color: #86868b;
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+    }
+
+    .data-row {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .data-box {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 30px;
+        min-width: 250px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    }
+
+    .data-label {
+        display: block;
+        color: #86868b;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+
+    .data-val {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #1d1d1f;
+        letter-spacing: -0.01em;
+    }
+
+    .data-val.accent {
+        color: #0066cc;
+        font-size: 2rem;
+    }
+
+    .data-arrow {
+        font-size: 2rem;
+        color: #86868b;
+        font-weight: 300;
+    }
+
+    /* CTA */
+    .cta-sec {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 48px;
+        background: #1d1d1f;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 40px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        transform: scale(1.03);
+        background: #000000;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media(max-width: 800px) {
+        .bento-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .data-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .data-box {
+            min-width: 100%;
+        }
+
+        .data-arrow {
+            transform: rotate(90deg);
+        }
+    }
+</style>
+
+<div class="apple-product-container">
+    <div class="hero-sec">
+        <div class="hero-badge">트래픽 증대 최적화</div>
+        <h1 class="hero-title">프리미엄 블로그/카페<br>퍼포먼스 패키지</h1>
+        <p class="hero-desc">단순한 원고 배포가 아닙니다. 진정성 있는 브랜드 스토리와 독보적인 SEO(검색엔진 최적화) 기술로 포털 사이트 최상단을 장악하여, 고객이 가장 먼저 브랜드와
+            만나게 합니다.</p>
+    </div>
+
+    <div class="bento-grid">
+        <div class="bento-item">
+            <h3>"검색하면 안 나와요, 어떡하죠?"</h3>
+            <p>고객은 검색을 통해 브랜드를 검증합니다. 아무리 좋은 상품이라도 메인 키워드에서 눈에 띄지 않으면 신뢰를 얻을 수 없습니다. 신동컴퍼니는 타겟 고객의 검색 동선 최전선에 브랜드를 정확히
+                위치시킵니다.</p>
+        </div>
+        <div class="bento-item">
+            <h3>상위 노출 로직 마스터</h3>
+            <p>수년간 축적된 네이버 및 주요 포털 로직 데이터와 키워드 설계 기술을 바탕으로 합니다. 어뷰징 없는 고품질 원고만을 기획하여, 실질적인 인입(In-bound)을 유도하고 안정적인 뷰
+                카운트를 확보합니다.</p>
+        </div>
+    </div>
+
+    <div class="data-sec">
+        <h2>검증된 성과 지표</h2>
+        <p>데이터가 증명하는 압도적인 트래픽 변화를 경험하세요.</p>
+        <div class="data-row">
+            <div class="data-box">
+                <span class="data-label">진행 전</span>
+                <span class="data-val">자체 블로그 간헐적 운영</span>
+            </div>
+            <div class="data-arrow">➔</div>
+            <div class="data-box" style="border-color: rgba(0, 102, 204, 0.3);">
+                <span class="data-label">진행 후 (목표치)</span>
+                <span class="data-val accent">월 10,000건+ 유입</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-sec">
+        <a href="http://pf.kakao.com/_HQErG/chat" target="_blank" class="cta-btn">해당 패키지 온라인 1:1 상담하기</a>
+    </div>
+</div>

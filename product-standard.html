@@ -1,0 +1,271 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/layout/basic/js/main.js)-->
+<!--@css(/layout/basic/css/main.css)-->
+
+<style>
+    /* Apple Titanium Dark Global */
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+    }
+
+    .apple-product-container {
+        background-color: #000;
+        color: #f5f5f7;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+        padding: 120px 20px 80px;
+        line-height: 1.6;
+    }
+
+    .hero-sec {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 40px;
+        color: #a1a1a6;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 5vw, 4.2rem);
+        font-weight: 800;
+        line-height: 1.15;
+        background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 24px;
+        letter-spacing: -0.04em;
+    }
+
+    .hero-desc {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        color: #86868b;
+        max-width: 700px;
+        margin: 0 auto 80px;
+        font-weight: 400;
+    }
+
+    /* Bento Sec */
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto 100px;
+    }
+
+    .bento-item {
+        background: #111111;
+        border-radius: 32px;
+        padding: 50px 40px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        transition: transform 0.4s ease, background 0.4s ease;
+    }
+
+    .bento-item:hover {
+        transform: translateY(-5px);
+        background: #161618;
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .bento-item h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #f5f5f7;
+        letter-spacing: -0.02em;
+    }
+
+    .bento-item p {
+        color: #a1a1a6;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* Data Sec */
+    .data-sec {
+        background: #1d1d1f;
+        border-radius: 40px;
+        padding: 80px 40px;
+        text-align: center;
+        max-width: 1100px;
+        margin: 0 auto 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .data-sec::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .data-sec h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 16px;
+        letter-spacing: -0.03em;
+    }
+
+    .data-sec>p {
+        color: #86868b;
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+    }
+
+    .data-row {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .data-box {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 24px;
+        padding: 30px;
+        min-width: 250px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .data-label {
+        display: block;
+        color: #86868b;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+
+    .data-val {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.01em;
+    }
+
+    .data-val.accent {
+        color: #bf5af2;
+        font-size: 2rem;
+    }
+
+    .data-arrow {
+        font-size: 2rem;
+        color: #55555a;
+        font-weight: 300;
+    }
+
+    /* CTA */
+    .cta-sec {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 48px;
+        background: #f5f5f7;
+        color: #000;
+        text-decoration: none;
+        border-radius: 40px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        transform: scale(1.03);
+        background: #ffffff;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media(max-width: 800px) {
+        .bento-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .data-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .data-box {
+            min-width: 100%;
+        }
+
+        .data-arrow {
+            transform: rotate(90deg);
+        }
+    }
+</style>
+
+<div class="apple-product-container">
+    <div class="hero-sec">
+        <div class="hero-badge">가성비 전방위 마케팅</div>
+        <h1 class="hero-title">신동 스탠다드 솔루션<br>(통합 마케팅 패키지)</h1>
+        <p class="hero-desc">기본기가 탄탄해야 브랜드가 살아나기 시작합니다. 검색 포털 인입영역(블로그)과 바이럴 최전선(SNS)을 한 번에 잡는 가장 이상적인 가성비 모듈입니다.</p>
+    </div>
+
+    <div class="bento-grid">
+        <div class="bento-item">
+            <h3>예산 효율의 극대화(Multi-use)</h3>
+            <p>하나의 웰메이드 콘텐츠를 기획하여 브랜드 블로그에 배포하고, 이를 감각적인 카드뉴스나 릴스 형태로 변형해 인스타그램에 송출합니다. 최소한의 예산으로 브랜드가 사방에서 노출되는 입체적인
+                경험을 선사합니다.</p>
+        </div>
+        <div class="bento-item">
+            <h3>강력한 브랜드 디지털 자산</h3>
+            <p>단순한 1회성 광고가 끝난 뒤 흔적이 남지 않던 경험은 이제 그만하세요. 스탠다드 패키지를 통해 매달 발행되는 하이퀄리티 콘텐츠들은 시간이 지날수록 브랜드의 권위를 높이는 디지털 자산으로
+                남게 됩니다.</p>
+        </div>
+    </div>
+
+    <div class="data-sec">
+        <h2>통합 브랜드 성과 창출</h2>
+        <p>파편화된 마케팅에서 벗어나 하나된 브랜드 목소리로 도달률을 넓힙니다.</p>
+        <div class="data-row">
+            <div class="data-box">
+                <span class="data-label">진행 전</span>
+                <span class="data-val" style="font-size:1.4rem;">채널별 디자인/메시지 분산</span>
+            </div>
+            <div class="data-arrow">➔</div>
+            <div class="data-box" style="border-color: rgba(175, 82, 222, 0.3);">
+                <span class="data-label">진행 후 (목표치)</span>
+                <span class="data-val accent">웹/앱 통합 신뢰도 폭발적 증가</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-sec">
+        <a href="http://pf.kakao.com/_HQErG/chat" target="_blank" class="cta-btn">해당 패키지 온라인 1:1 상담하기</a>
+    </div>
+</div>

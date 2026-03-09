@@ -1,0 +1,1508 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/layout/basic/js/main.js)-->
+<!--@css(/layout/basic/css/main.css)-->
+
+<style>
+    /* Apple Titanium Light Global */
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .apple-product-container {
+        background-color: #ffffff;
+        color: #1d1d1f;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
+        line-height: 1.6;
+        word-break: keep-all;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Section 1: Hero Hook (Dark Space Theme) */
+    .hero-sec {
+        background: radial-gradient(circle at 50% 120%, #1a1a2e 0%, #000000 70%);
+        color: #fff;
+        padding: 180px 20px 140px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-sec::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.05;
+        pointer-events: none;
+        animation: drift 100s linear infinite;
+    }
+
+    @keyframes drift {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .hero-badge {
+        display: inline-block;
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 40px;
+        color: #f5f5f7;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 6vw, 4.5rem);
+        font-weight: 900;
+        line-height: 1.25;
+        margin-bottom: 30px;
+        letter-spacing: -0.04em;
+        animation: fadeInUp 1s ease 0.2s forwards;
+        opacity: 0;
+        transform: translateY(20px);
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-title .highlight {
+        background: linear-gradient(135deg, #FF3B30 0%, #FF9F0A 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+    }
+
+    .hero-desc {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        color: #a1a1a6;
+        max-width: 800px;
+        margin: 0 auto;
+        font-weight: 500;
+        animation: fadeInUp 1s ease 0.4s forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* Common Section Layout */
+    .pt-sec {
+        padding: 120px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .sec-title {
+        text-align: center;
+        font-size: clamp(1.6rem, 5vw, 3rem);
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 20px;
+        letter-spacing: -0.03em;
+        line-height: 1.3;
+    }
+
+    .sec-desc {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #86868b;
+        margin-bottom: 80px;
+        font-weight: 500;
+    }
+
+    /* Section 2: Infographic Split (Why Shorts) */
+    /* Section 2: Infographic Split (Why Shorts) */
+
+    /* Naver Search Bar Mimic */
+    .naver-search-mimic {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto 40px;
+        padding: 16px 28px;
+        border: 4px solid #03c75a;
+        border-radius: 50px;
+        background: #ffffff;
+        box-shadow: 0 15px 40px rgba(3, 199, 90, 0.12);
+        animation: floatSearch 4s ease-in-out infinite;
+    }
+
+    @keyframes floatSearch {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-12px);
+        }
+    }
+
+    .naver-n {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: #03c75a;
+        margin-right: 20px;
+        line-height: 1;
+    }
+
+    .naver-placeholder {
+        flex: 1;
+        text-align: left;
+        color: #a0a0a0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid #03c75a;
+        animation: typing 2s steps(20, end) infinite alternate;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    .naver-icon {
+        font-size: 1.5rem;
+    }
+
+    .compare-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin: 30px auto 50px;
+        max-width: 900px;
+    }
+
+    .compare-side {
+        padding: 30px;
+        border-radius: 24px;
+        text-align: center;
+        flex: 1;
+    }
+
+    .compare-side.old {
+        background: #fdfdfd;
+        color: #86868b;
+        border: 1px solid #f0f0f5;
+    }
+
+    .compare-side.new {
+        background: #ffffff;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+        color: #1d1d1f;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        transform: scale(1.03);
+    }
+
+    .vs-arrow {
+        font-size: 1.5rem;
+        color: #d1d1d6;
+        font-weight: 300;
+    }
+
+    .compare-side h4 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .compare-side.new h4 {
+        background: linear-gradient(135deg, #0066cc 0%, #34a853 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .compare-side.old h4 {
+        text-decoration: line-through;
+    }
+
+    .compare-side p {
+        font-size: 1rem;
+        line-height: 1.45;
+        margin: 0;
+    }
+
+    .compare-img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+        border-radius: 16px;
+        margin: 0 auto 20px;
+        display: block;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .feature-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 25px 0;
+        border-bottom: 1px solid #f0f0f5;
+    }
+
+    .feature-item:last-child {
+        border-bottom: none;
+    }
+
+    .feat-icon {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+        background: #f5f5f7;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .feat-text h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1d1d1f;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+
+    .feat-text p {
+        font-size: 1.05rem;
+        color: #55555a;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .feat-text strong {
+        color: #1d1d1f;
+        font-weight: 700;
+    }
+
+    .sc-icon {
+        font-size: 3.5rem;
+        margin-bottom: 30px;
+        display: inline-block;
+        background: #1d1d1f;
+        color: #fff;
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        border-radius: 24px;
+    }
+
+    .split-card h3 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: #1d1d1f;
+        letter-spacing: -0.02em;
+    }
+
+    .split-card p {
+        font-size: 1.15rem;
+        color: #55555a;
+        line-height: 1.6;
+    }
+
+    /* Section 3: Social Proof & Marquee */
+    .marquee-wrapper {
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 20px 0;
+        background: #ffffff;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 40s linear infinite;
+    }
+
+    .marquee-track:hover {
+        animation-play-state: paused;
+    }
+
+    .marquee-content {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        padding-right: 60px;
+        /* Space between the original and clone */
+    }
+
+    .marquee-content img {
+        height: 40px !important;
+        max-height: 40px !important;
+        width: 140px !important;
+        max-width: 140px !important;
+        opacity: 0.6;
+        transition: opacity 0.3s, transform 0.3s;
+        object-fit: contain !important;
+        display: block;
+    }
+
+    .marquee-content img:hover {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .trust-flex {
+        display: flex;
+        justify-content: space-around;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 60px;
+    }
+
+    .trust-item {
+        text-align: center;
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .trust-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .trust-item h4 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #1d1d1f;
+    }
+
+    .trust-item p {
+        color: #86868b;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* section 3: Youtube frame */
+    .youtube-slider-container {
+        margin: 60px auto 0;
+        max-width: 1000px;
+        text-align: center;
+    }
+
+    .youtube-frame-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .youtube-frame-wrapper::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari and Opera */
+    }
+
+    .yt-channel-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        color: #ff0000;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 10px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        margin-bottom: 30px;
+    }
+
+    .yt-channel-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.15);
+        color: #d00000;
+    }
+
+    .yt-card {
+        width: 300px;
+        height: 533px;
+        background: #000;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+    }
+
+    .yt-card iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* Section 4: Bento Grid (AZ Project 4 Core Solutions) */
+    /* Growth Chart Section */
+    .growth-chart-container {
+        background: #ffffff;
+        border-radius: 40px;
+        padding: 60px 40px;
+        max-width: 900px;
+        margin: 0 auto 60px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        position: relative;
+    }
+
+    .growth-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .growth-badge {
+        display: inline-block;
+        background: #e8f0fe;
+        color: #1a73e8;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .growth-header h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #1d1d1f;
+    }
+
+    .growth-graph-area {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .growth-svg {
+        width: 100%;
+        height: auto;
+        display: block;
+        overflow: visible;
+    }
+
+    .growth-line {
+        stroke-dasharray: 2000;
+        stroke-dashoffset: 2000;
+        animation: drawLine 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes drawLine {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    .growth-stats {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: -30px;
+        position: relative;
+        z-index: 10;
+        flex-wrap: wrap;
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 25px 35px;
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        text-align: center;
+        min-width: 240px;
+    }
+
+    .stat-label {
+        font-size: 1.15rem;
+        color: #55555a;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .stat-value {
+        font-size: 2.8rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+    }
+
+    .stat-value.highlight-blue {
+        background: linear-gradient(135deg, #0066cc 0%, #1a73e8 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .stat-value.highlight-green {
+        background: linear-gradient(135deg, #34a853 0%, #0f9d58 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .bento-box {
+        background: #ffffff;
+        border-radius: 32px;
+        padding: 50px 40px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .bento-box:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .bento-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .bento-box h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: #1d1d1f;
+    }
+
+    .bento-box p {
+        font-size: 1.1rem;
+        color: #55555a;
+        line-height: 1.6;
+    }
+
+    /* Section 5: Pricing (Receipt / Table) */
+    .pricing-sec {
+        background: #f5f5f7;
+        padding: 120px 20px;
+        border-top: 1px solid #ebebeb;
+    }
+
+    .pricing-grid {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: nowrap;
+    }
+
+    .price-card {
+        flex: 1 1 0;
+        min-width: 0;
+        background: #ffffff;
+        border-radius: 32px;
+        padding: 40px 30px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        transition: transform 0.3s ease;
+    }
+
+    .price-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .price-card.popular {
+        border: 2px solid #1d1d1f;
+        transform: scale(1.05);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .price-card.popular:hover {
+        transform: scale(1.05) translateY(-10px);
+    }
+
+    .popular-badge {
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1d1d1f;
+        color: #fff;
+        padding: 6px 20px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    .badge-label {
+        display: inline-block;
+        padding: 6px 14px;
+        background: #f5f5f7;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: #86868b;
+        margin-bottom: 20px;
+        align-self: flex-start;
+    }
+
+    .price-card.popular .badge-label {
+        background: #e8f0fe;
+        color: #1a73e8;
+    }
+
+    .price-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 15px;
+    }
+
+    .price-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 40px;
+        flex-grow: 1;
+        border-top: 1px dashed #ddd;
+        padding-top: 30px;
+    }
+
+    .price-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 15px;
+        font-size: 1.05rem;
+        color: #55555a;
+        line-height: 1.5;
+    }
+
+    .price-list li::before {
+        content: '✓';
+        color: #34c759;
+        font-weight: bold;
+    }
+
+    .price-strike {
+        font-size: 1.2rem;
+        color: #a1a1a6;
+        text-decoration: line-through;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .price-amount {
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: #1d1d1f;
+        letter-spacing: -0.05em;
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+    }
+
+    .price-amount .won {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .price-amount.highlight {
+        color: #FF3B30;
+    }
+
+    /* Section 6: Target Audience Checklist */
+    .target-checklist {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 40px;
+        padding: 60px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .check-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f5f5f7;
+        border-radius: 20px;
+        transition: background 0.3s;
+    }
+
+    .check-item:hover {
+        background: #f0f0f5;
+    }
+
+    .check-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .check-icon {
+        font-size: 2rem;
+        color: #34c759;
+        flex-shrink: 0;
+    }
+
+    .check-text {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1d1d1f;
+    }
+
+    /* Section 7: CTA */
+    .final-cta-sec {
+        text-align: center;
+        padding: 140px 20px;
+        background: #f5f5f7;
+    }
+
+    .final-cta-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 20px;
+    }
+
+    .final-cta-desc {
+        font-size: 1.2rem;
+        color: #55555a;
+        margin-bottom: 50px;
+    }
+
+    .kakao-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 50px;
+        background: #FEE500;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 1.3rem;
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        box-shadow: 0 10px 30px rgba(254, 229, 0, 0.3);
+        gap: 10px;
+    }
+
+    .kakao-btn:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(254, 229, 0, 0.5);
+    }
+
+    .kakao-icon {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.82 1.83 5.3 4.64 6.7.2.1.28.28.23.48l-.86 3.19c-.06.21.14.39.34.28l3.66-2.48c.18-.12.4-.15.6-.08.77.22 1.57.34 2.39.34 5.52 0 10-3.58 10-8s-4.48-8-10-8z" fill="%23000"/></svg>');
+        background-size: cover;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media(max-width: 900px) {
+        .split-view {
+            flex-direction: column;
+        }
+
+        .bento-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .pt-sec {
+            padding: 80px 20px;
+        }
+
+        .hero-sec {
+            padding: 140px 20px 80px;
+        }
+
+        .hero-badge {
+            font-size: 0.85rem;
+            padding: 6px 14px;
+        }
+
+        .sec-desc {
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
+            flex-direction: column;
+            gap: 15px;
+            padding: 25px 0;
+        }
+
+        .compare-container {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .compare-side {
+            padding: 25px 20px;
+        }
+
+        .vs-arrow {
+            transform: rotate(90deg);
+            margin: 10px 0;
+        }
+
+        .growth-chart-container {
+            padding: 30px 20px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+        }
+
+        .growth-stats {
+            flex-direction: column;
+            align-items: stretch;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            min-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+        }
+
+        .growth-header h3 {
+            font-size: 1.4rem;
+        }
+
+        .growth-svg text {
+            font-size: 24px;
+        }
+
+        .bento-box {
+            padding: 30px 20px;
+            border-radius: 20px;
+        }
+
+        .target-checklist {
+            padding: 30px 20px;
+        }
+
+        .trust-flex {
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .trust-item {
+            padding: 0 10px;
+        }
+
+        /* 견적 섹션: 모바일에서는 세로 스크롤(위아래 배치)로 변경 */
+        .pricing-grid {
+            flex-direction: column;
+            flex-wrap: nowrap;
+            overflow-x: hidden;
+            padding-bottom: 20px;
+            scroll-snap-type: none;
+            gap: 20px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .price-card {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 100%;
+            min-width: unset;
+            scroll-snap-align: none;
+        }
+
+        .price-card.popular {
+            transform: scale(1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .price-card.popular:hover {
+            transform: none;
+        }
+
+        .naver-search-mimic {
+            width: 100%;
+            padding: 12px 20px;
+        }
+
+        .naver-placeholder {
+            font-size: 1rem;
+        }
+
+        .marquee-content img {
+            max-width: 100px !important;
+            margin-right: 20px;
+        }
+
+        .marquee-content {
+            gap: 30px;
+            padding-right: 30px;
+        }
+    }
+</style>
+
+<div class="apple-product-container">
+
+    <!-- Section 1: Hero Hook -->
+    <section class="hero-sec">
+        <div class="hero-badge">브랜드의 폭발적인 성장을 위한 최적의 마케팅 솔루션</div>
+        <h1 class="hero-title">🚀 100만 조회수도 가능!<br>지금은 <span class="highlight">숏폼(짧은 영상)</span>의 시대입니다.</h1>
+        <p class="hero-desc">아직도 검색 의도가 있는 고객만 기다리는 '수동형 광고'에 머물러 계신가요?</p>
+    </section>
+
+    <!-- Section 2: Why Shorts (Infographic) -->
+    <section class="pt-sec">
+
+        <div class="naver-search-mimic">
+            <span class="naver-n">N</span>
+            <div style="flex:1; display:flex;">
+                <span class="naver-placeholder">신동컴퍼니 마케팅</span>
+            </div>
+            <span class="naver-icon">🔍</span>
+        </div>
+
+        <h2 class="sec-title" style="margin-bottom: 15px;">아직도 검색창 앞에서 고객을 기다리시나요?</h2>
+        <p class="sec-desc" style="font-size: 1.3rem; color: #1d1d1f; font-weight: 600;">1,000만 조회수의 기적, 숏폼은 더 이상 선택이 아닌
+            <span style="color:#0066cc;">생존 전략</span>입니다.
+        </p>
+
+        <div class="compare-container">
+            <div class="compare-side old">
+                <img src="https://lh3.googleusercontent.com/d/1lQ1IkwG-U7OQKiW3UkigCEMdO-DXT9s8"
+                    alt="Manual Targeting Search" class="compare-img">
+                <h4>수동형 검색 광고</h4>
+                <p>경쟁이 치열한 검색 포털창.<br>고객이 먼저 찾을 때까지 수동적으로 대기합니다.</p>
+            </div>
+            <div class="vs-arrow">→</div>
+            <div class="compare-side new">
+                <img src="https://lh3.googleusercontent.com/d/12wd4WIC5YzMUjkqawp9vQzhXjNQPLFSa"
+                    alt="Data Targeting Visualization" class="compare-img">
+                <h4>능동형 숏폼 타겟팅</h4>
+                <p>알고리즘을 통한 정밀 타겟팅.<br>핵심 고객의 스마트폰 화면으로 알아서 찾아갑니다.</p>
+            </div>
+        </div>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feat-icon">🎯</div>
+                <div class="feat-text">
+                    <h3>수동형 한계 돌파, 정밀 타겟팅</h3>
+                    <p>고객이 먼저 찾을 때까지 기다리지 않습니다. <strong>'지역·성별·관심사'</strong> 데이터로 내 브랜드에 확률 높은 고객만 즉각 찾아가 꽂힙니다.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feat-icon">🚀</div>
+                <div class="feat-text">
+                    <h3>알고리즘 우선 노출, 폭발적 도달</h3>
+                    <p>유튜브/인스타 알고리즘의 <strong>우선 노출 혜택</strong>을 받아 적은 예산으로도 압도적인 오가닉 바이럴(Viral)을 15초 안에 터뜨립니다.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feat-icon">✨</div>
+                <div class="feat-text">
+                    <h3>스킵(Skip) 불가, 스며드는 침투력</h3>
+                    <p>딱딱한 광고 공식은 죽었습니다. 최신 트렌드를 맞춘 <strong>자연스러운 콘텐츠</strong>로 거부감 없이 즐기게 만들어 곧장 팬덤과 전환을 만듭니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Social Proof (Why Shindong) -->
+    <section style="overflow: hidden; padding-bottom: 40px;">
+        <h2 class="sec-title" style="margin-top: 40px;">왜 '신동컴퍼니'인가?</h2>
+        <p class="sec-desc" style="margin-bottom: 20px;">1,000곳 이상의 브랜드가 이미 신동컴퍼니의 퍼포먼스를 경험했습니다.</p>
+
+        <!-- Marquee -->
+        <div class="marquee-wrapper">
+            <div class="marquee-track">
+                <!-- Original Set -->
+                <div class="marquee-content">
+                    <img src="https://lh3.googleusercontent.com/d/1J8tUpveioG4ymFXurs-rR-XrEuEaR0I5" alt="Client 1"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1WADaRxw2hCU44wChu3frRnCyBcZvWti6" alt="Client 2"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1CFEmexOclAFjPBdlPsHpaDBb60LcOLHf" alt="Client 3"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1EbdrWkXpNzDPN1BvaGNcx7NRqrB9fa-n" alt="Client 4"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1z5sXh0lOHskiFSIpQlnZ0t7orGpiNQjt" alt="Client 5"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1oUKFrZZ9_kfMgBLO_JUGrWO12YuJh_Vq" alt="Client 6"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1z8mhcE_nUUH6jDvUgu_FoNJHBBM5G9_v" alt="Client 7"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/14eukJXqkadK-FUrNs6WEVLUxA88R9wqY" alt="Client 8"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1XB9c5BsPpcm48qcjh8U1Gf97_CdgdvOS" alt="Client 9"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1ymeTjzd1_1kASLdyiN-qmxcptIhBBCG3" alt="Client 10"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                </div>
+                <!-- Duplicated Set for Seamless Looping -->
+                <div class="marquee-content" aria-hidden="true">
+                    <img src="https://lh3.googleusercontent.com/d/1J8tUpveioG4ymFXurs-rR-XrEuEaR0I5" alt="Client 1"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1WADaRxw2hCU44wChu3frRnCyBcZvWti6" alt="Client 2"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1CFEmexOclAFjPBdlPsHpaDBb60LcOLHf" alt="Client 3"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1EbdrWkXpNzDPN1BvaGNcx7NRqrB9fa-n" alt="Client 4"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1z5sXh0lOHskiFSIpQlnZ0t7orGpiNQjt" alt="Client 5"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1oUKFrZZ9_kfMgBLO_JUGrWO12YuJh_Vq" alt="Client 6"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1z8mhcE_nUUH6jDvUgu_FoNJHBBM5G9_v" alt="Client 7"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/14eukJXqkadK-FUrNs6WEVLUxA88R9wqY" alt="Client 8"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1XB9c5BsPpcm48qcjh8U1Gf97_CdgdvOS" alt="Client 9"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                    <img src="https://lh3.googleusercontent.com/d/1ymeTjzd1_1kASLdyiN-qmxcptIhBBCG3" alt="Client 10"
+                        style="height: 40px; max-width: 180px; width: auto;">
+                </div>
+            </div>
+        </div>
+
+        <!-- YouTube References -->
+        <h3
+            style="text-align: center; font-size: 1.5rem; font-weight: 700; color: #1d1d1f; margin-top: 40px; margin-bottom: 10px;">
+            실시간 숏폼 레퍼런스 포트폴리오</h3>
+        <p style="text-align: center; color: #86868b; margin-bottom: 20px;">검증된 압도적 영상 퀄리티를 미리 확인하세요.</p>
+
+        <div style="text-align: center;">
+            <a href="https://www.youtube.com/@boxdong5339" target="_blank" class="yt-channel-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+                주식회사 신동컴퍼니 공식 채널 바로가기
+            </a>
+        </div>
+
+        <div class="youtube-slider-container">
+            <div class="youtube-frame-wrapper">
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/Wo_6LuiFNU8" title="Shorts Reference 1"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/p2ZIYB32JOU" title="Shorts Reference 2"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/7G0hPVEV7bQ" title="Shorts Reference 3"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/Mb4ypKOhhG0" title="Shorts Reference 4"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/TqVmvBaA3i8" title="Shorts Reference 5"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/scyxHDXpjKk" title="Shorts Reference 6"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/NPvycv1n_go" title="Shorts Reference 7"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card">
+                    <iframe src="https://www.youtube.com/embed/fYXD-hhz8vc" title="Shorts Reference 8"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="yt-card"
+                    style="background: #f5f5f7; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <span style="font-size: 3rem;">📸</span>
+                    <span style="font-weight: bold; margin-top: 10px;">More References</span>
+                    <a href="https://www.youtube.com/@boxdong5339" target="_blank"
+                        style="margin-top: 10px; color: #0066cc; text-decoration: none; font-weight: bold;">채널 구경하기</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Features -->
+        <div class="trust-flex" style="max-width: 1000px; margin: 80px auto 0;">
+            <div class="trust-item">
+                <div class="trust-icon">🤵‍♂️</div>
+                <h4>전문가 밀착 매니지먼트</h4>
+                <p>인하우스 마케터가 생긴 듯한 든든함! 전담 PM이 분석부터 기획, 제작, 리스크 관리까지 A to Z 원스톱으로 책임 운영합니다.</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">⚡</div>
+                <h4>투명하고 빠른 소통 시스템</h4>
+                <p>구글 스프레드시트 실시간 연동 및 영상 피드백 전용 솔루션을 통한 가장 직관적이고 효율적인 업무 공유 환경을 제공합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: 4 Core Solutions -->
+    <section class="pt-sec"
+        style="background: #fafafa; border-radius: 60px; margin-bottom: 80px; padding-top: 60px; margin-top: 40px;">
+        <h2 class="sec-title">AZ프로젝트 4대 핵심 솔루션</h2>
+        <p class="sec-desc">기획부터 노출까지, 완벽한 파이프라인을 구축해 드립니다.</p>
+
+        <!-- Growth Chart Component -->
+        <div class="growth-chart-container">
+            <div class="growth-header">
+                <span class="growth-badge">📈 압도적인 성과 입증 데이터</span>
+                <h3>단 2~3개월 만에 만들어내는 폭발적 우상향 곡선</h3>
+            </div>
+            <div class="growth-graph-area">
+                <svg viewBox="0 0 800 350" class="growth-svg">
+                    <defs>
+                        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#0066cc" />
+                            <stop offset="100%" stop-color="#34a853" />
+                        </linearGradient>
+                        <linearGradient id="fillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(52, 168, 83, 0.15)" />
+                            <stop offset="100%" stop-color="rgba(52, 168, 83, 0)" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Background Fill Area -->
+                    <path d="M 40 300 C 250 300, 300 200, 450 160 C 600 120, 700 80, 760 40 L 760 300 Z"
+                        fill="url(#fillGrad)" />
+
+                    <!-- Dotted guidelines -->
+                    <line x1="40" y1="300" x2="760" y2="300" stroke="#e0e0e0" stroke-width="1.5"
+                        stroke-dasharray="5,5" />
+
+                    <!-- Animated Line Chart -->
+                    <path d="M 40 300 C 250 300, 300 200, 450 160 C 600 120, 700 80, 760 40" fill="none"
+                        stroke="url(#lineGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"
+                        class="growth-line" />
+
+                    <!-- Datapoints -->
+                    <circle cx="40" cy="300" r="10" fill="#0066cc" stroke="#fff" stroke-width="4" />
+                    <text x="30" y="330" font-size="16" font-weight="700" fill="#86868b">계약 전</text>
+
+                    <circle cx="450" cy="160" r="10" fill="#1a73e8" stroke="#fff" stroke-width="4" />
+                    <text x="400" y="195" font-size="16" font-weight="700" fill="#86868b">관리 1개월 차</text>
+
+                    <circle cx="760" cy="40" r="14" fill="#34a853" stroke="#fff" stroke-width="4"
+                        style="filter: drop-shadow(0 4px 6px rgba(52,168,83,0.3));" />
+                    <text x="630" y="25" font-size="20" font-weight="900" fill="#34a853">관리 2~3개월 차</text>
+                </svg>
+
+                <div class="growth-stats">
+                    <div class="stat-card">
+                        <div class="stat-label">플레이스 유입</div>
+                        <div class="stat-value highlight-blue">+187%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">스마트콜 통화량</div>
+                        <div class="stat-value highlight-green">+324%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-box">
+                <span class="bento-icon">🎥</span>
+                <h3>감각적 숏폼 영상 기획·제작</h3>
+                <p>브랜드 맞춤 기획 ➔ 전문 촬영 ➔ 고퀄리티 컷 편집 ➔ 계정 업로드까지. 트렌드를 읽는 압도적인 영상물을 책임집니다.</p>
+            </div>
+            <div class="bento-box">
+                <span class="bento-icon">📱</span>
+                <h3>정밀 메타 스폰서드 광고</h3>
+                <p>아무에게나 노출하지 않습니다. 페이스북&인스타의 지역/관심사 기반 고도화 타겟팅으로 진짜 '잠재 고객'에게만 띄웁니다.</p>
+            </div>
+            <div class="bento-box">
+                <span class="bento-icon">📝</span>
+                <h3>최우선 노출, 최적화 블로그</h3>
+                <p>영상으로 유입된 고객이 검색을 했을 때 압도적인 신뢰를 줍니다. 메인 키워드별 상위 점유를 공략하는 블로그/체험단을 운영합니다.</p>
+            </div>
+            <div class="bento-box">
+                <span class="bento-icon">📈</span>
+                <h3>인바운드 트래픽 설계 (SEO)</h3>
+                <p>검색엔진 최적화 및 네이버 플레이스 순위 상승 등 합법적이고 강력한 트래픽을 유도하여 튼튼한 체급을 완성합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Pricing Receipts -->
+    <section class="pricing-sec">
+        <h2 class="sec-title">올인원 패키지 파격 견적 제안</h2>
+        <p class="sec-desc">단 하나의 패키지로 숏폼부터 블로그, 트래픽까지 완벽하게 해결하세요.<br>거품을 뺀 합리적인 가격으로 기업의 가치를 높여드립니다.</p>
+
+        <div class="pricing-grid">
+            <!-- Plan 1 -->
+            <div class="price-card">
+                <span class="badge-label">Basic / 입문용</span>
+                <h3 class="price-title">단건 상품</h3>
+                <ul class="price-list">
+                    <li><strong>숏폼 영상 제작 1건</strong> (기획, 컷편집, TTS 활용)</li>
+                    <li><strong>인플루언서 매장 방문 촬영 지원</strong></li>
+                </ul>
+                <div class="price-footer">
+                    <span class="price-strike">기존 1,990,000원</span>
+                    <div class="price-amount highlight">99<span class="won">만 원</span></div>
+                </div>
+            </div>
+
+            <!-- Plan 2 (Popular) -->
+            <div class="price-card popular">
+                <div class="popular-badge">가장 많이 찾는 베스트 플랜</div>
+                <span class="badge-label">Standard / 추천형</span>
+                <h3 class="price-title">메인 패키지 상품</h3>
+                <ul class="price-list">
+                    <li><strong>숏폼 영상 제작 3건</strong> (기획, 컷편집, TTS 활용)</li>
+                    <li><strong>인플루언서 매장 방문 촬영 지원</strong></li>
+                    <li>메타광고: IG/FB 계정 세팅 대행 (※광고비 별도)</li>
+                    <li>최적화 블로그: <strong>포스팅 2건 작성</strong></li>
+                    <li>최적화 블로그: <strong>체험단 무제한 지원</strong></li>
+                    <li>네이버 플레이스 및 SEO 기본 최적화 세팅</li>
+                </ul>
+                <div class="price-footer">
+                    <span class="price-strike">기존 2,990,000원</span>
+                    <div class="price-amount highlight">169<span class="won">만 원</span></div>
+                </div>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="price-card">
+                <span class="badge-label">Premium / 마스터형</span>
+                <h3 class="price-title">풀패키지 상품</h3>
+                <ul class="price-list">
+                    <li><strong>숏폼 영상 제작 3건 + AI 영상 제작 3건</strong></li>
+                    <li><strong>인플루언서 매장 방문 촬영 지원</strong></li>
+                    <li>메타광고: IG/FB 계정 세팅 대행 (※광고비 별도)</li>
+                    <li>최적화 블로그: <strong>포스팅 30건 대량 작성</strong></li>
+                    <li>최적화 블로그: <strong>체험단 무제한 지원</strong></li>
+                    <li>플레이스/SEO 최적화 + <strong>카페 홍보 + 당근 광고</strong></li>
+                </ul>
+                <div class="price-footer">
+                    <span class="price-strike">기존 7,990,000원</span>
+                    <div class="price-amount highlight" style="color:#1d1d1f">550<span class="won">만 원</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Target Audience -->
+    <section class="pt-sec">
+        <h2 class="sec-title" style="margin-bottom: 50px;">이런 대표님께 강력히 추천합니다!</h2>
+        <div class="target-checklist">
+            <div class="check-item">
+                <span class="check-icon">✔</span>
+                <span class="check-text">정체된 매출의 돌파구! 브랜드 인지도와 엄청난 조회수를 당장 터뜨리고 싶은 분</span>
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✔</span>
+                <span class="check-text">한정된 마케팅 예산으로 '내 타겟 고객'에게만 낭비 없이 100% 효율을 내고 싶은 분</span>
+            </div>
+            <div class="check-item">
+                <span class="check-icon">✔</span>
+                <span class="check-text">기획, 촬영, 최상급 편집은 물론 계정 관리까지 전문가가 알아서 다 해줬으면 하는 분</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Final CTA -->
+    <section class="final-cta-sec">
+        <h2 class="final-cta-title">망설임은 매출 상승의 기회만 늦출 뿐입니다.</h2>
+        <p class="final-cta-desc">업종과 핏(Fit)에 맞춘 디테일한 1:1 맞춤형 기획이 들어가는 프리미엄 상품입니다.<br>결제 전 반드시 아래 **'카카오톡 채널'**로 문의를
+            남겨주시면 담당 PM이 신속하고 상세하게 안내해 드리겠습니다.</p>
+        <a href="http://pf.kakao.com/_HQErG/chat" target="_blank" class="kakao-btn">
+            <span class="kakao-icon"></span>
+            무료 컨설팅 & 1:1 카톡 상담 예약하기
+        </a>
+    </section>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.querySelector('.youtube-frame-wrapper');
+        if (!slider) return;
+
+        // Auto Sliding Logic
+        let autoSlideInterval;
+        const scrollAmount = 320; // Card width + gap
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                    // Return to start
+                    slider.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }, 1000); // Slide every 1 second
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Pause on hover
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+        // Pause on touch
+        slider.addEventListener('touchstart', stopAutoSlide);
+        slider.addEventListener('touchend', startAutoSlide);
+
+        startAutoSlide();
+
+        // Dynamic Youtube Fetch Logic
+        async function fetchLatestShorts() {
+            const channelId = 'UCuZXS-dr3_4dQ-MJDNfwkbA';
+            const rssUrl = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                if (data.status === 'ok' && data.items.length > 0) {
+                    slider.innerHTML = ''; // Clear default hardcoded cards
+
+                    let count = 0;
+                    data.items.forEach(item => {
+                        if (count >= 8) return; // Limit to 8
+
+                        // Match both youtube.com/watch?v=ID and youtube.com/v/ID formats from RSS
+                        const link = item.link || '';
+                        let videoId = null;
+                        const vMatch = link.match(/v=([^&]+)/);
+                        const slashVMatch = link.match(/\/v\/([^?&]+)/);
+                        const embedMatch = link.match(/\/embed\/([^?&]+)/);
+
+                        if (vMatch && vMatch[1]) {
+                            videoId = vMatch[1];
+                        } else if (slashVMatch && slashVMatch[1]) {
+                            videoId = slashVMatch[1];
+                        } else if (embedMatch && embedMatch[1]) {
+                            videoId = embedMatch[1];
+                        } else {
+                            // Fallback: Try to extract from the end of the URL (e.g. youtu.be/ID)
+                            const parts = link.split('/');
+                            const lastPart = parts[parts.length - 1];
+                            if (lastPart && lastPart.length > 5) {
+                                videoId = lastPart.split('?')[0]; // strip query params if any
+                            }
+                        }
+
+                        if (videoId) {
+                            const card = document.createElement('div');
+                            card.className = 'yt-card';
+                            card.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&playlist=${videoId}&mute=1" title="${item.title || 'Shorts Reference'}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+                            slider.appendChild(card);
+                            count++;
+                        }
+                    });
+
+                    // Append 'More References' card
+                    slider.innerHTML += `<div class="yt-card" style="background: #f5f5f7; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <span style="font-size: 3rem;">📸</span>
+                    <span style="font-weight: bold; margin-top: 10px;">More References</span>
+                    <a href="https://www.youtube.com/@boxdong5339" target="_blank" style="margin-top: 10px; color: #0066cc; text-decoration: none; font-weight: bold;">채널 구경하기</a>
+                </div>`;
+                } else {
+                    console.error('RSS API returned no items, keeping hardcoded ones.');
+                }
+            } catch (e) {
+                console.error('Failed to fetch latest YouTube videos. Keeping hardcoded ones.', e);
+                // Do not clear slider.innerHTML so the original hardcoded videos remain as fallback
+            }
+        }
+
+        // Fetch immediately on load, then every 6 hours
+        fetchLatestShorts();
+        setInterval(fetchLatestShorts, 6 * 60 * 60 * 1000);
+    });
+</script>
