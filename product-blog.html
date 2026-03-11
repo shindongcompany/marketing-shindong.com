@@ -9,190 +9,868 @@
         margin: 0;
         padding: 0;
         background-color: #ffffff;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
     }
 
     .apple-product-container {
         background-color: #ffffff;
         color: #1d1d1f;
         font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", sans-serif;
-        padding: 120px 20px 80px;
         line-height: 1.6;
+        word-break: keep-all;
+        overflow-x: hidden;
+        width: 100%;
     }
 
+    /* Section 1: Hero Hook (Dark Space Theme) */
     .hero-sec {
-        max-width: 1000px;
-        margin: 0 auto;
+        background: radial-gradient(circle at 50% 120%, #1a1a2e 0%, #000000 70%);
+        color: #fff;
+        padding: 180px 20px 140px;
         text-align: center;
-        animation: fadeInUp 1s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-        opacity: 0;
-        transform: translateY(20px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-sec::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 50px 50px;
+        opacity: 0.05;
+        pointer-events: none;
+        animation: drift 100s linear infinite;
+    }
+
+    @keyframes drift {
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
     .hero-badge {
         display: inline-block;
-        padding: 6px 16px;
-        background: rgba(0, 0, 0, 0.04);
-        border: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 40px;
-        color: #86868b;
-        font-weight: 600;
-        font-size: 0.9rem;
-        margin-bottom: 24px;
+        color: #f5f5f7;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+        transform: translateY(20px);
     }
 
     .hero-title {
-        font-size: clamp(2.5rem, 5vw, 4.2rem);
-        font-weight: 800;
-        line-height: 1.15;
-        background: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
+        font-size: clamp(2rem, 6vw, 4.5rem);
+        font-weight: 900;
+        line-height: 1.25;
+        margin-bottom: 30px;
+        letter-spacing: -0.04em;
+        animation: fadeInUp 1s ease 0.2s forwards;
+        opacity: 0;
+        transform: translateY(20px);
+        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-title .highlight {
+        background: linear-gradient(135deg, #FF3B30 0%, #FF9F0A 100%);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 24px;
-        letter-spacing: -0.04em;
+        display: inline-block;
     }
 
     .hero-desc {
-        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+        color: #a1a1a6;
+        max-width: 800px;
+        margin: 0 auto;
+        font-weight: 500;
+        animation: fadeInUp 1s ease 0.4s forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* Common Section Layout */
+    .pt-sec {
+        padding: 120px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .sec-title {
+        text-align: center;
+        font-size: clamp(1.6rem, 5vw, 3rem);
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 20px;
+        letter-spacing: -0.03em;
+        line-height: 1.3;
+    }
+
+    .sec-desc {
+        text-align: center;
+        font-size: 1.2rem;
         color: #86868b;
-        max-width: 700px;
-        margin: 0 auto 80px;
-        font-weight: 400;
+        margin-bottom: 80px;
+        font-weight: 500;
     }
 
-    /* Bento Sec */
-    .bento-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        max-width: 1100px;
-        margin: 0 auto 100px;
-    }
+    /* Section 2: Infographic Split (Why Shorts) */
+    /* Section 2: Infographic Split (Why Shorts) */
 
-    .bento-item {
-        background: #f5f5f7;
-        border-radius: 32px;
-        padding: 50px 40px;
-        border: 1px solid rgba(0, 0, 0, 0.02);
-        transition: transform 0.4s ease, background 0.4s ease;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    }
-
-    .bento-item:hover {
-        transform: translateY(-5px);
+    /* Naver Search Bar Mimic */
+    .naver-search-mimic {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto 40px;
+        padding: 16px 28px;
+        border: 4px solid #03c75a;
+        border-radius: 50px;
         background: #ffffff;
-        border-color: rgba(0, 0, 0, 0.05);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 15px 40px rgba(3, 199, 90, 0.12);
+        animation: floatSearch 4s ease-in-out infinite;
     }
 
-    .bento-item h3 {
-        font-size: 1.7rem;
+    @keyframes floatSearch {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-12px);
+        }
+    }
+
+    .naver-n {
+        font-family: 'Arial Black', sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: #03c75a;
+        margin-right: 20px;
+        line-height: 1;
+    }
+
+    .naver-placeholder {
+        flex: 1;
+        text-align: left;
+        color: #a0a0a0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid #03c75a;
+        animation: typing 2s steps(20, end) infinite alternate;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    .naver-icon {
+        font-size: 1.5rem;
+    }
+
+    .compare-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin: 30px auto 50px;
+        max-width: 900px;
+    }
+
+    .compare-side {
+        padding: 30px;
+        border-radius: 24px;
+        text-align: center;
+        flex: 1;
+    }
+
+    .compare-side.old {
+        background: #fdfdfd;
+        color: #86868b;
+        border: 1px solid #f0f0f5;
+    }
+
+    .compare-side.new {
+        background: #ffffff;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+        color: #1d1d1f;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        transform: scale(1.03);
+    }
+
+    .vs-arrow {
+        font-size: 1.5rem;
+        color: #d1d1d6;
+        font-weight: 300;
+    }
+
+    .compare-side h4 {
+        font-size: 1.4rem;
         font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .compare-side.new h4 {
+        background: linear-gradient(135deg, #0066cc 0%, #34a853 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .compare-side.old h4 {
+        text-decoration: line-through;
+    }
+
+    .compare-side p {
+        font-size: 1rem;
+        line-height: 1.45;
+        margin: 0;
+    }
+
+    .compare-img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+        border-radius: 16px;
+        margin: 0 auto 20px;
+        display: block;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .feature-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        padding: 25px 0;
+        border-bottom: 1px solid #f0f0f5;
+    }
+
+    .feature-item:last-child {
+        border-bottom: none;
+    }
+
+    .feat-icon {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+        background: #f5f5f7;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .feat-text h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1d1d1f;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+    }
+
+    .feat-text p {
+        font-size: 1.05rem;
+        color: #55555a;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    .feat-text strong {
+        color: #1d1d1f;
+        font-weight: 700;
+    }
+
+    .sc-icon {
+        font-size: 3.5rem;
+        margin-bottom: 30px;
+        display: inline-block;
+        background: #1d1d1f;
+        color: #fff;
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        border-radius: 24px;
+    }
+
+    .split-card h3 {
+        font-size: 1.8rem;
+        font-weight: 800;
         margin-bottom: 20px;
         color: #1d1d1f;
         letter-spacing: -0.02em;
     }
 
-    .bento-item p {
-        color: #86868b;
-        font-size: 1.05rem;
+    .split-card p {
+        font-size: 1.15rem;
+        color: #55555a;
         line-height: 1.6;
     }
 
-    /* Data Sec */
-    .data-sec {
-        background: #f5f5f7;
-        border-radius: 40px;
-        padding: 80px 40px;
-        text-align: center;
-        max-width: 1100px;
-        margin: 0 auto 100px;
-        position: relative;
+    /* Section 3: Social Proof & Marquee */
+    .marquee-wrapper {
         overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.02);
-    }
-
-    .data-sec h2 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #1d1d1f;
-        margin-bottom: 16px;
-        letter-spacing: -0.03em;
-    }
-
-    .data-sec>p {
-        color: #86868b;
-        font-size: 1.1rem;
-        margin-bottom: 50px;
-    }
-
-    .data-row {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        align-items: center;
-        position: relative;
-        z-index: 2;
-    }
-
-    .data-box {
+        white-space: nowrap;
+        padding: 20px 0;
         background: #ffffff;
-        border-radius: 24px;
-        padding: 30px;
-        min-width: 250px;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        margin-bottom: 40px;
+        position: relative;
     }
 
-    .data-label {
+    .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 40s linear infinite;
+    }
+
+    .marquee-track:hover {
+        animation-play-state: paused;
+    }
+
+    .marquee-content {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        padding-right: 60px;
+        /* Space between the original and clone */
+    }
+
+    .marquee-content img {
+        height: 40px !important;
+        max-height: 40px !important;
+        width: 140px !important;
+        max-width: 140px !important;
+        opacity: 0.6;
+        transition: opacity 0.3s, transform 0.3s;
+        object-fit: contain !important;
         display: block;
-        color: #86868b;
-        font-weight: 600;
-        font-size: 0.95rem;
-        margin-bottom: 12px;
     }
 
-    .data-val {
-        font-size: 1.6rem;
+    .marquee-content img:hover {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .trust-flex {
+        display: flex;
+        justify-content: space-around;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 60px;
+    }
+
+    .trust-item {
+        text-align: center;
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .trust-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .trust-item h4 {
+        font-size: 1.3rem;
         font-weight: 700;
+        margin-bottom: 10px;
         color: #1d1d1f;
-        letter-spacing: -0.01em;
     }
 
-    .data-val.accent {
-        color: #0066cc;
-        font-size: 2rem;
-    }
-
-    .data-arrow {
-        font-size: 2rem;
+    .trust-item p {
         color: #86868b;
-        font-weight: 300;
+        font-size: 1rem;
+        line-height: 1.5;
     }
 
-    /* CTA */
-    .cta-sec {
+    /* section 3: Youtube frame */
+    .youtube-slider-container {
+        margin: 60px auto 0;
+        max-width: 1000px;
+        text-align: center;
+    }
+
+    .youtube-frame-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    .youtube-frame-wrapper::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari and Opera */
+    }
+
+    .yt-channel-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        color: #ff0000;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 10px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        margin-bottom: 30px;
+    }
+
+    .yt-channel-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.15);
+        color: #d00000;
+    }
+
+    .yt-card {
+        width: 300px;
+        height: 533px;
+        background: #000;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+    }
+
+    .yt-card iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* Section 4: Bento Grid (AZ Project 4 Core Solutions) */
+    /* Growth Chart Section */
+    .growth-chart-container {
+        background: #ffffff;
+        border-radius: 40px;
+        padding: 60px 40px;
+        max-width: 900px;
+        margin: 0 auto 60px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        position: relative;
+    }
+
+    .growth-header {
         text-align: center;
         margin-bottom: 40px;
     }
 
-    .cta-btn {
+    .growth-badge {
+        display: inline-block;
+        background: #e8f0fe;
+        color: #1a73e8;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .growth-header h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #1d1d1f;
+    }
+
+    .growth-graph-area {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .growth-svg {
+        width: 100%;
+        height: auto;
+        display: block;
+        overflow: visible;
+    }
+
+    .growth-line {
+        stroke-dasharray: 2000;
+        stroke-dashoffset: 2000;
+        animation: drawLine 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes drawLine {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    .growth-stats {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: -30px;
+        position: relative;
+        z-index: 10;
+        flex-wrap: wrap;
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 25px 35px;
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        text-align: center;
+        min-width: 240px;
+    }
+
+    .stat-label {
+        font-size: 1.15rem;
+        color: #55555a;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .stat-value {
+        font-size: 2.8rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+    }
+
+    .stat-value.highlight-blue {
+        background: linear-gradient(135deg, #0066cc 0%, #1a73e8 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .stat-value.highlight-green {
+        background: linear-gradient(135deg, #34a853 0%, #0f9d58 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .bento-box {
+        background: #ffffff;
+        border-radius: 32px;
+        padding: 50px 40px;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .bento-box:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .bento-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .bento-box h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: #1d1d1f;
+    }
+
+    .bento-box p {
+        font-size: 1.1rem;
+        color: #55555a;
+        line-height: 1.6;
+    }
+
+    /* Section 5: Pricing (Receipt / Table) */
+    .pricing-sec {
+        background: #f5f5f7;
+        padding: 120px 20px;
+        border-top: 1px solid #ebebeb;
+    }
+
+    .pricing-grid {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: nowrap;
+    }
+
+    .price-card {
+        flex: 1 1 0;
+        min-width: 0;
+        background: #ffffff;
+        border-radius: 32px;
+        padding: 40px 30px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        transition: transform 0.3s ease;
+    }
+
+    .price-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .price-card.popular {
+        border: 2px solid #1d1d1f;
+        transform: scale(1.05);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .price-card.popular:hover {
+        transform: scale(1.05) translateY(-10px);
+    }
+
+    .popular-badge {
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1d1d1f;
+        color: #fff;
+        padding: 6px 20px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    .badge-label {
+        display: inline-block;
+        padding: 6px 14px;
+        background: #f5f5f7;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: #86868b;
+        margin-bottom: 20px;
+        align-self: flex-start;
+    }
+
+    .price-card.popular .badge-label {
+        background: #e8f0fe;
+        color: #1a73e8;
+    }
+
+    .price-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 20px;
+        line-height: 1.35;
+        word-break: keep-all;
+    }
+
+    .price-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 40px;
+        flex-grow: 1;
+        border-top: 1px dashed #ddd;
+        padding-top: 30px;
+    }
+
+    .price-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 15px;
+        font-size: 1.05rem;
+        color: #55555a;
+        line-height: 1.5;
+    }
+
+    .price-list li::before {
+        content: '✓';
+        color: #34c759;
+        font-weight: bold;
+    }
+
+    .price-strike {
+        font-size: 1.2rem;
+        color: #a1a1a6;
+        text-decoration: line-through;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .price-amount {
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: #1d1d1f;
+        letter-spacing: -0.05em;
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+    }
+
+    .price-amount .won {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .price-amount.highlight {
+        color: #FF3B30;
+    }
+
+    /* Section 6: Target Audience Checklist */
+    .target-checklist {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 40px;
+        padding: 60px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .check-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f5f5f7;
+        border-radius: 20px;
+        transition: background 0.3s;
+    }
+
+    .check-item:hover {
+        background: #f0f0f5;
+    }
+
+    .check-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .check-icon {
+        font-size: 2rem;
+        color: #34c759;
+        flex-shrink: 0;
+    }
+
+    .check-text {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1d1d1f;
+    }
+
+    /* Section 7: CTA */
+    .final-cta-sec {
+        text-align: center;
+        padding: 140px 20px;
+        background: #f5f5f7;
+    }
+
+    .final-cta-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1d1d1f;
+        margin-bottom: 20px;
+    }
+
+    .final-cta-desc {
+        font-size: 1.2rem;
+        color: #55555a;
+        margin-bottom: 50px;
+    }
+
+    .kakao-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 18px 48px;
-        background: #1d1d1f;
-        color: #ffffff;
+        padding: 20px 50px;
+        background: #FEE500;
+        color: #000000;
         text-decoration: none;
-        border-radius: 40px;
-        font-weight: 700;
-        font-size: 1.1rem;
-        transition: transform 0.3s ease, background 0.3s ease;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 1.3rem;
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        box-shadow: 0 10px 30px rgba(254, 229, 0, 0.3);
+        gap: 10px;
     }
 
-    .cta-btn:hover {
-        transform: scale(1.03);
-        background: #000000;
+    .kakao-btn:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(254, 229, 0, 0.5);
+    }
+
+    .kakao-icon {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-5.52 0-10 3.58-10 8 0 2.82 1.83 5.3 4.64 6.7.2.1.28.28.23.48l-.86 3.19c-.06.21.14.39.34.28l3.66-2.48c.18-.12.4-.15.6-.08.77.22 1.57.34 2.39.34 5.52 0 10-3.58 10-8s-4.48-8-10-8z" fill="%23000"/></svg>');
+        background-size: cover;
     }
 
     @keyframes fadeInUp {
@@ -202,65 +880,750 @@
         }
     }
 
-    @media(max-width: 800px) {
+    @media(max-width: 900px) {
+        .split-view {
+            flex-direction: column;
+        }
+
         .bento-grid {
             grid-template-columns: 1fr;
-            gap: 20px;
         }
 
-        .data-row {
+        .pt-sec {
+            padding: 80px 20px;
+        }
+
+        .hero-sec {
+            padding: 140px 20px 80px;
+        }
+
+        .hero-badge {
+            font-size: 0.85rem;
+            padding: 6px 14px;
+        }
+
+        .sec-desc {
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        .feature-item {
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
+            padding: 25px 0;
         }
 
-        .data-box {
-            min-width: 100%;
+        .compare-container {
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .data-arrow {
+        .compare-side {
+            padding: 25px 20px;
+        }
+
+        .vs-arrow {
             transform: rotate(90deg);
+            margin: 10px 0;
+        }
+
+        .growth-chart-container {
+            padding: 30px 20px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+        }
+
+        .growth-stats {
+            flex-direction: column;
+            align-items: stretch;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            min-width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+        }
+
+        .growth-header h3 {
+            font-size: 1.4rem;
+        }
+
+        .growth-svg text {
+            font-size: 24px;
+        }
+
+        .bento-box {
+            padding: 30px 20px;
+            border-radius: 20px;
+        }
+
+        .target-checklist {
+            padding: 30px 20px;
+        }
+
+        .trust-flex {
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .trust-item {
+            padding: 0 10px;
+        }
+
+        /* 견적 섹션: 모바일에서는 세로 스크롤(위아래 배치)로 변경 */
+        .pricing-grid {
+            flex-direction: column;
+            flex-wrap: nowrap;
+            overflow-x: hidden;
+            padding-bottom: 20px;
+            scroll-snap-type: none;
+            gap: 20px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .price-card {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 100%;
+            min-width: unset;
+            scroll-snap-align: none;
+        }
+
+        .price-card.popular {
+            transform: scale(1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .price-card.popular:hover {
+            transform: none;
+        }
+
+        .naver-search-mimic {
+            width: 100%;
+            padding: 12px 20px;
+        }
+
+        .naver-placeholder {
+            font-size: 1rem;
+        }
+
+        .marquee-content img {
+            max-width: 100px !important;
+            margin-right: 20px;
+        }
+
+        .marquee-content {
+            gap: 30px;
+            padding-right: 30px;
         }
     }
 </style>
 
 <div class="apple-product-container">
-    <div class="hero-sec">
-        <div class="hero-badge">트래픽 증대 최적화</div>
-        <h1 class="hero-title">프리미엄 블로그/카페<br>퍼포먼스 패키지</h1>
-        <p class="hero-desc">단순한 원고 배포가 아닙니다. 진정성 있는 브랜드 스토리와 독보적인 SEO(검색엔진 최적화) 기술로 포털 사이트 최상단을 장악하여, 고객이 가장 먼저 브랜드와
-            만나게 합니다.</p>
-    </div>
 
-    <div class="bento-grid">
-        <div class="bento-item">
-            <h3>"검색하면 안 나와요, 어떡하죠?"</h3>
-            <p>고객은 검색을 통해 브랜드를 검증합니다. 아무리 좋은 상품이라도 메인 키워드에서 눈에 띄지 않으면 신뢰를 얻을 수 없습니다. 신동컴퍼니는 타겟 고객의 검색 동선 최전선에 브랜드를 정확히
-                위치시킵니다.</p>
-        </div>
-        <div class="bento-item">
-            <h3>상위 노출 로직 마스터</h3>
-            <p>수년간 축적된 네이버 및 주요 포털 로직 데이터와 키워드 설계 기술을 바탕으로 합니다. 어뷰징 없는 고품질 원고만을 기획하여, 실질적인 인입(In-bound)을 유도하고 안정적인 뷰
-                카운트를 확보합니다.</p>
-        </div>
-    </div>
+    <style>
+        /* Global Typography & Readability Fixes */
+        .apple-product-container {
+            word-break: keep-all;
+            color: #1d1d1f;
+        }
 
-    <div class="data-sec">
-        <h2>검증된 성과 지표</h2>
-        <p>데이터가 증명하는 압도적인 트래픽 변화를 경험하세요.</p>
-        <div class="data-row">
-            <div class="data-box">
-                <span class="data-label">진행 전</span>
-                <span class="data-val">자체 블로그 간헐적 운영</span>
+        .apple-product-container p {
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-break {
+                display: block;
+            }
+
+            .desktop-break {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-break {
+                display: none;
+            }
+
+            .desktop-break {
+                display: inline-block;
+            }
+        }
+
+        .hero-sec {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: #fff;
+            padding: 180px 20px 140px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-sec::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+            pointer-events: none;
+        }
+    </style>
+    <!-- Section 1: Hero Hook -->
+    <section class="hero-sec">
+        <div class="hero-badge">신동컴퍼니의 강력한 마케팅 무기</div>
+        <h1 class="hero-title">매출을 견인하는 24시간 영업사원,<br><span class="highlight">브랜드 블로그 대행</span></h1>
+        <p class="hero-desc">단순 포스팅 횟수 채우기가 아닙니다. 철저한 기획과 SEO 최적화로 '진짜 고객'을 데려오는 전환형 블로그를 만듭니다.</p>
+    </section>
+
+    <!-- Section 1.5: Reference / Portfolio (NEW) -->
+    <section class="reference-sec"
+        style="background-color: #111; padding: 100px 20px 120px; color: #fff; border-radius: 0 0 40px 40px; margin-bottom: 60px;">
+        <div style="text-align: center; max-width: 900px; margin: 0 auto 50px;">
+            <div
+                style="display: inline-block; padding: 8px 16px; background: rgba(255,255,255,0.1); border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px; color: #FFA000;">
+                🚀 폭발적인 성장 곡선의 시작
             </div>
-            <div class="data-arrow">➔</div>
-            <div class="data-box" style="border-color: rgba(0, 102, 204, 0.3);">
-                <span class="data-label">진행 후 (목표치)</span>
-                <span class="data-val accent">월 10,000건+ 유입</span>
+            <h2
+                style="font-size: 2.8rem; font-weight: 800; line-height: 1.3; margin-bottom: 20px; letter-spacing: -0.02em;">
+                결과로 증명합니다.<br>매출을 바꾸는 '진짜' 브랜드 블로그
+            </h2>
+            <p style="font-size: 1.2rem; color: #a1a1a6; line-height: 1.6; word-break: keep-all;">
+                뻔한 원고 복붙, 의미 없는 노출은 그만두세요. 신동컴퍼니는 철저한 업종 분석과 SEO 기획을 바탕으로 방문자 수를 넘어 '실제 문의와 매출'로 직결되는 압도적인 성공 레퍼런스를 만들어
+                냅니다. 우리가 어떻게 성장시켰는지, 두 눈으로 직접 확인해 보세요.
+            </p>
+        </div>
+
+        <!-- Reference Images Grid (Rotating Marquee) -->
+        <style>
+            .ref-marquee-container {
+                max-width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                position: relative;
+                padding: 10px 0;
+            }
+
+            .ref-marquee-content {
+                display: inline-block;
+                animation: scroll-left-ref 45s linear infinite;
+            }
+
+            .ref-image-box {
+                display: inline-flex;
+                background: #222;
+                border-radius: 20px;
+                height: 350px;
+                width: 300px;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #333;
+                margin-right: 30px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            @keyframes scroll-left-ref {
+                from {
+                    transform: translateX(0);
+                }
+
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+            /* Pause on hover */
+            .ref-marquee-container:hover .ref-marquee-content {
+                animation-play-state: paused;
+            }
+        </style>
+        <div class="ref-marquee-container">
+            <div class="ref-marquee-content">
+                <!-- Set 1 -->
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1IBdFnWVPiCicIsQgAjo0jWrnPS64tdOJ" alt="포트폴리오 1"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1_QVu-qkcRqnAyg3KF_g8rtA9P5ypL-yL" alt="포트폴리오 2"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1tBf2HypzJnXkNf3FpQkfgKMxZCWmvOu0" alt="포트폴리오 3"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1nMYup0EJ2aGUxtsGR_63boGPCBA4_FDv" alt="포트폴리오 4"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1uBWnL-du1x8y4RClcfOkGoftOtgUWNpq" alt="포트폴리오 5"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1PuND0kQMBSa3elDUbGih_hV1_4DkDjod" alt="포트폴리오 6"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1E_bSYphSn9BxPntGzP8DkMnvINk9Ri6Q" alt="포트폴리오 7"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1QQO8jOqIbxXMlefpgTgYYuhmapwRN84W" alt="포트폴리오 8"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1j13fa18XwxYvKv8e00IpNxCvpWMbQF6t" alt="포트폴리오 9"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1M-I7glBZ5UFkqnwSBlUL9Qf2cpxig1dr" alt="포트폴리오 10"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <!-- Set 2 (Duplicated for infinite scroll) -->
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1IBdFnWVPiCicIsQgAjo0jWrnPS64tdOJ" alt="포트폴리오 1"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1_QVu-qkcRqnAyg3KF_g8rtA9P5ypL-yL" alt="포트폴리오 2"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1tBf2HypzJnXkNf3FpQkfgKMxZCWmvOu0" alt="포트폴리오 3"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1nMYup0EJ2aGUxtsGR_63boGPCBA4_FDv" alt="포트폴리오 4"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1uBWnL-du1x8y4RClcfOkGoftOtgUWNpq" alt="포트폴리오 5"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1PuND0kQMBSa3elDUbGih_hV1_4DkDjod" alt="포트폴리오 6"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1E_bSYphSn9BxPntGzP8DkMnvINk9Ri6Q" alt="포트폴리오 7"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1QQO8jOqIbxXMlefpgTgYYuhmapwRN84W" alt="포트폴리오 8"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1j13fa18XwxYvKv8e00IpNxCvpWMbQF6t" alt="포트폴리오 9"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
+                <div class="ref-image-box"><img
+                        src="https://lh3.googleusercontent.com/d/1M-I7glBZ5UFkqnwSBlUL9Qf2cpxig1dr" alt="포트폴리오 10"
+                        style="width: 100%; height: 100%; object-fit: cover;"></div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="cta-sec">
-        <a href="http://pf.kakao.com/_HQErG/chat" target="_blank" class="cta-btn">해당 패키지 온라인 1:1 상담하기</a>
-    </div>
+    <!-- Section 2: Why Shorts (Infographic) -->
+    <section class="pt-sec">
+
+        <div class="naver-search-mimic">
+            <span class="naver-n">N</span>
+            <div style="flex:1; display:flex;">
+                <span class="naver-placeholder">신동컴퍼니 마케팅</span>
+            </div>
+            <span class="naver-icon">🔍</span>
+        </div>
+
+        <h2 class="sec-title" style="margin-bottom: 15px;">고객이 검색하는 모든 순간, 우리 브랜드가 보입니다.<br><span
+                style="display:inline-block; margin-top:10px; background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800;">SEO
+                최적화</span></h2>
+        <p class="sec-desc" style="font-size: 1.3rem; color: #1d1d1f; font-weight: 600;">잠재 고객은 구매 전 반드시 검색을 합니다. 체류 시간을
+            늘리는 양질의 콘텐츠로 검색 결과의 점유율을 장악하세요.</p>
+
+        <div class="compare-container">
+            <div class="compare-side old">
+                <img src="https://lh3.googleusercontent.com/d/1lQ1IkwG-U7OQKiW3UkigCEMdO-DXT9s8"
+                    alt="Manual Targeting Search" class="compare-img">
+                <h4>단기 광고 (CPC)</h4>
+                <p>일회성으로 소모되는 비용.<br>광고비가 소진되면 즉시 노출도 사라집니다.</p>
+            </div>
+            <div class="vs-arrow" style="font-size: 3rem; color: #0066cc; font-weight: bold; transform: scale(1.2);">➡️
+            </div>
+            <div class="compare-side new">
+                <div
+                    style="background: url('https://lh3.googleusercontent.com/d/12wd4WIC5YzMUjkqawp9vQzhXjNQPLFSa') center/cover; width: 220px; height: 350px; border-radius: 30px; border: 8px solid #333; margin: 0 auto 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+                </div>
+                <h4>브랜드 블로그 (SEO)</h4>
+                <p>지속적인 유입을 만드는 콘텐츠 자산.<br>한 번 잘 써둔 정보성 포스팅은 수년 동안 실적을 냅니다.</p>
+            </div>
+        </div>
+
+        <div class="feature-list" style="display: none;">
+        </div>
+    </section>
+
+    <!-- Section 3: Why Us (Trust & Differentiators) -->
+    <section class="pt-sec" style="padding-bottom: 40px;">
+        <h2 class="sec-title" style="margin-top: 40px;">왜 '신동컴퍼니'인가?</h2>
+        <p class="sec-desc" style="margin-bottom: 40px;">타 공장형 대행사와는 확연히 다른 깊이와 디테일을 경험하세요.</p>
+
+        <!-- Dynamic Proof Carousel -->
+        <h3 style="text-align: center; font-size: 1.5rem; font-weight: 700; color: #1d1d1f; margin-bottom: 20px;">
+            압도적 퀄리티의 썸네일 & 성과 지표
+        </h3>
+        <div class="youtube-slider-container">
+            <div class="youtube-frame-wrapper" style="gap: 30px;">
+                <!-- Reusing youtube-frame-wrapper class for simple horizontal scroll showcase -->
+                <div class="yt-card" style="height: auto; padding: 20px; background: #fff; border: 1px solid #ebebeb;">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Data Proof" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+                    <h4 style="font-size: 1.1rem; text-align: center; margin:0;">방문자 수 급상승</h4>
+                </div>
+                <div class="yt-card" style="height: auto; padding: 20px; background: #fff; border: 1px solid #ebebeb;">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Thumbnail Design" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+                    <h4 style="font-size: 1.1rem; text-align: center; margin:0;">고퀄리티 썸네일 디자인</h4>
+                </div>
+                <div class="yt-card" style="height: auto; padding: 20px; background: #fff; border: 1px solid #ebebeb;">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Keyword Strategy" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+                    <h4 style="font-size: 1.1rem; text-align: center; margin:0;">철저한 키워드 장악</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 Core Differentiators -->
+        <div class="trust-flex" style="max-width: 1100px; margin: 80px auto 0;">
+            <div class="trust-item">
+                <div class="trust-icon"
+                    style="background:#FFF3E0; border-radius: 20px; width: 80px; height: 80px; line-height: 80px; margin: 0 auto 20px;">
+                    🔍</div>
+                <h4>데이터 기반 맞춤 기획</h4>
+                <p>뻔한 원고가 아닌, 업종별 세부 키워드와 경쟁사를 철저히 분석하여 가장 효율적인 콘텐츠 전략을 짭니다.</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"
+                    style="background:#E3F2FD; border-radius: 20px; width: 80px; height: 80px; line-height: 80px; margin: 0 auto 20px;">
+                    🏆</div>
+                <h4>가독성을 높이는 디자인</h4>
+                <p>시선을 단번에 끄는 프리미엄 썸네일과 가독성 높은 깔끔한 본문 템플릿 세팅으로 고객의 체류 시간을 극대화합니다.</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"
+                    style="background:#E8F5E9; border-radius: 20px; width: 80px; height: 80px; line-height: 80px; margin: 0 auto 20px;">
+                    🤝</div>
+                <h4>투명한 소통과 리포트</h4>
+                <p>깜깜이 운영은 그만! 전담 매니저의 빠르고 정확한 피드백은 물론, 체계적인 월간 성과 보고서를 투명하게 제공합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Brand Blog Value -->
+    <section class="pt-sec"
+        style="background: #fafafa; border-radius: 60px; margin-bottom: 80px; padding-top: 80px; padding-bottom: 80px; margin-top: 40px;">
+        <h2 class="sec-title">브랜드 블로그, 왜 필수적일까?</h2>
+        <p class="sec-desc">단순한 글쓰기가 아닙니다. 매출을 바꾸는 가장 강력한 투자의 당위성입니다.</p>
+
+        <div class="bento-grid">
+            <div class="bento-box">
+                <span class="bento-icon" style="color:#FFA000;">💎</span>
+                <h3>휘발성 광고 NO, 자산이 되는 마케팅</h3>
+                <p>단순한 소모성 단기 광고가 아닙니다. 퀄리티 높은 포스팅은 시간이 지날수록 검색 노출의 파급력이 커지는 브랜드의 가장 확실한 디지털 자산이 됩니다.</p>
+            </div>
+            <div class="bento-box">
+                <span class="bento-icon" style="color:#FFA000;">🧲</span>
+                <h3>진성 고객을 부르는 정밀한 타겟팅</h3>
+                <p>알고리즘과 세부 키워드를 장악하여, 우리 브랜드 서비스(제품)에 관심 있는 결제 직전의 '진성 유저'만 강력하게 끌어당깁니다.</p>
+            </div>
+            <div class="bento-box">
+                <span class="bento-icon" style="color:#FFA000;">🏅</span>
+                <h3>브랜드의 가치를 높이는 전문성 어필</h3>
+                <p>고객은 구매 결정 전 반드시 '검증' 과정을 거칩니다. 블로그를 통해 업계의 철학과 노하우를 꾸준히 공유하여 대체 불가능한 브랜드 가치를 심어주세요.</p>
+            </div>
+            <div class="bento-box">
+                <span class="bento-icon" style="color:#FFA000;">📈</span>
+                <h3>광고비 대비 효율을 높이는 압도적 가성비</h3>
+                <p>지속적으로 클릭당 비용(CPC)을 지불해야 하는 퍼포먼스 광고와 달리, 한번 노출된 유기적 검색 콘텐츠는 꾸준히 트래픽을 만들어내어 유지비용을 기하급수적으로 낮춥니다.</p>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Section 4.5: Process Workflow Grid (NEW) -->
+    <style>
+        .process-grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            width: calc(33.333% - 14px);
+            min-width: 280px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-img-box {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            background-color: #f5f5f7;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .process-step-badge {
+            display: inline-block;
+            background: #1d1d1f;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .process-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            word-break: keep-all;
+        }
+
+        .process-desc {
+            font-size: 0.95rem;
+            color: #86868b;
+            line-height: 1.5;
+            word-break: keep-all;
+        }
+
+        @media (max-width: 900px) {
+            .process-card {
+                width: 100%;
+            }
+
+            .process-img-box {
+                height: 220px;
+            }
+        }
+    </style>
+
+    <section class="pt-sec" style="margin-bottom: 100px;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span
+                style="display:inline-block; font-size: 0.9rem; font-weight: 700; color: #0066cc; margin-bottom: 10px; background: #e3f2fd; padding: 5px 12px; border-radius: 20px;">
+                📈 RESULTS-DRIVEN PROCESS
+            </span>
+            <h2 class="sec-title" style="margin-bottom: 15px;">결과를 만드는 5단계 퀄리티 컨트롤</h2>
+            <p class="sec-desc">결과가 다를 수밖에 없는 신동컴퍼니만의 꼼꼼한 작업 라인업입니다.</p>
+        </div>
+
+        <div class="process-grid-container">
+            <!-- STEP 1 -->
+            <div class="process-card">
+                <div class="process-img-box"
+                    style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div>
+                    <span class="process-step-badge">STEP 1</span>
+                    <h3 class="process-title">카테고리 키워드 추출 및 관리</h3>
+                    <p class="process-desc">업종과 타겟 검색 패턴을 분석하여 전환으로 이어지는 황금 키워드 트리를 구성합니다.</p>
+                </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="process-card">
+                <div class="process-img-box"
+                    style="background-image: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div>
+                    <span class="process-step-badge">STEP 2</span>
+                    <h3 class="process-title">1,500자 이상 전문 포스팅 기획/작성</h3>
+                    <p class="process-desc">자체 작가진이 정보성과 설득력을 갖춘 1,500자 이상의 고퀄리티 원고를 기획합니다.</p>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="process-card">
+                <div class="process-img-box"
+                    style="background-image: url('https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div>
+                    <span class="process-step-badge">STEP 3</span>
+                    <h3 class="process-title">포스팅 썸네일 & 배너 제작</h3>
+                    <p class="process-desc">클릭을 유도하는 맞춤형 프리미엄 썸네일을 세련되게 제작하여 첫인상을 압도합니다.</p>
+                </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="process-card">
+                <div class="process-img-box"
+                    style="background-image: url('https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); border: 1px solid #e1e1e1;">
+                </div>
+                <div>
+                    <span class="process-step-badge">STEP 4</span>
+                    <h3 class="process-title">전략적 포스팅 스케줄링 및 업로드</h3>
+                    <p class="process-desc">네이버 로직과 타겟 활동 시간을 고려하여 가장 효과적인 시간대에 전략적으로 발행합니다.</p>
+                </div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="process-card">
+                <div class="process-img-box"
+                    style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                </div>
+                <div>
+                    <span class="process-step-badge">STEP 5</span>
+                    <h3 class="process-title">이웃 관리 + 공감 활동</h3>
+                    <p class="process-desc">꾸준한 소통과 공감으로 블로그 지수를 높이고 잠재 고객과의 접점을 활성화합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Pricing Receipts -->
+    <section class="pricing-sec">
+        <h2 class="sec-title" style="margin-bottom: 20px;">합리적이고 투명한 요금 체계</h2>
+        <p class="sec-desc" style="line-height: 1.6;">
+            ※ 사진은 업체에서 전달해주셔야 하며,<br>
+            업종에 따라 포스팅 주제 또는 키워드 방향 협의가 필요할 수 있습니다.<br>
+            <span
+                style="display:inline-block; margin-top:20px; font-weight:600; padding:10px 20px; background:#e8f5e9; color:#2e7d32; border-radius:10px;">옵션상품:
+                이미지 제작 초과 옵션 회당 3만원</span>
+        </p>
+
+        <div class="pricing-grid">
+            <!-- Plan 1 -->
+            <div class="price-card">
+                <span class="badge-label">A형</span>
+                <h3 class="price-title">주 2회 포스팅 (월 8회)</h3>
+                <ul class="price-list">
+                    <li>1,500자 이상 포스팅 작성</li>
+                    <li>블로그 이웃 관리</li>
+                    <li>카테고리 키워드 추출 및 정리</li>
+                    <li>주 2회 포스팅 (월 8회)</li>
+                </ul>
+                <div class="price-footer">
+                    <div class="price-amount">40<span class="won">만 원</span><span
+                            style="font-size: 1rem; color: #86868b; align-self: center;"> / 월</span></div>
+                </div>
+            </div>
+
+            <!-- Plan 2 (Popular) -->
+            <div class="price-card popular" style="box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);">
+                <div class="popular-badge"
+                    style="background: linear-gradient(135deg, #0066cc 0%, #34a853 100%); color: #fff;">추천 / BEST</div>
+                <span class="badge-label">B형</span>
+                <h3 class="price-title">주 4회 포스팅 (월 16회)</h3>
+                <ul class="price-list">
+                    <li>포스팅 썸네일 제작 제공</li>
+                    <li>1,500자 이상 포스팅 작성</li>
+                    <li>이웃관리 + 공감 관리</li>
+                    <li>카테고리 키워드 추출 및 관리</li>
+                    <li>주 4회 포스팅 (월 16회)</li>
+                </ul>
+                <div class="price-footer">
+                    <div class="price-amount highlight">60<span class="won">만 원</span><span
+                            style="font-size: 1rem; color: #86868b; align-self: center;"> / 월</span></div>
+                </div>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="price-card">
+                <span class="badge-label">C형</span>
+                <h3 class="price-title">주 5회 포스팅 (월 20회)</h3>
+                <ul class="price-list">
+                    <li>썸네일 제작 + 블로그 배너 제작</li>
+                    <li>1,500자 이상 포스팅 작성</li>
+                    <li>이웃관리 + 공감 관리</li>
+                    <li>카테고리 키워드 추출 및 관리</li>
+                    <li>주 5회 포스팅 (월 20회)</li>
+                </ul>
+                <div class="price-footer">
+                    <div class="price-amount highlight" style="color:#1d1d1f">80<span class="won">만 원</span><span
+                            style="font-size: 1rem; color: #86868b; align-self: center;"> / 월</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Target Audience -->
+    <section class="pt-sec"
+        style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.95)), url('https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; padding-top: 100px; padding-bottom: 100px;">
+        <h2 class="sec-title" style="margin-bottom: 50px;">이런 대표님께 강력히 추천합니다!</h2>
+        <div class="target-checklist">
+            <div class="check-item">
+                <span class="check-icon">🤔</span>
+                <span class="check-text">대행사에 맡겼는데 소통이 안 돼서 답답하셨던 대표님</span>
+            </div>
+            <div class="check-item">
+                <span class="check-icon">😮‍💨</span>
+                <span class="check-text">글만 찍어내는 공장형 블로그에 지치신 대표님</span>
+            </div>
+            <div class="check-item">
+                <span class="check-icon">📉</span>
+                <span class="check-text">마케팅 비용 대비 전환(매출)이 안 나와 고민이신 대표님</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Final CTA -->
+    <section class="final-cta-sec">
+        <h2 class="final-cta-title">망설임은 경쟁사의 배만 불릴 뿐입니다.</h2>
+        <p class="final-cta-desc">지금 바로 우리 브랜드의 블로그 상태를 진단받아보세요.<br>결제 전 반드시 아래 **'카카오톡 채널'**로 문의를
+            남겨주시면 담당 PM이 신속하고 상세하게 안내해 드리겠습니다.</p>
+        <a href="http://pf.kakao.com/_HQErG/chat" target="_blank" class="kakao-btn"
+            style="padding: 25px 60px; font-size: 1.5rem;">
+            <span class="kakao-icon"></span>
+            👉 신동컴퍼니 무료 블로그 진단 & 단가표 확인하기
+        </a>
+    </section>
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.querySelector('.youtube-frame-wrapper');
+        if (!slider) return;
+
+        // Auto Sliding Logic
+        let autoSlideInterval;
+        const scrollAmount = 320; // Card width + gap
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                    // Return to start
+                    slider.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }, 1000); // Slide every 1 second
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Pause on hover
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+        // Pause on touch
+        slider.addEventListener('touchstart', stopAutoSlide);
+        slider.addEventListener('touchend', startAutoSlide);
+
+        startAutoSlide();
+    });
+</script>
